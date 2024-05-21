@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
+
+  db:
+    image: nouchka/sqlite3
+    volumes:
+      - data_volume:/db
+    environment:
+      - SQLITE_DATABASE=/db/mydatabase.db
+
+volumes:
+  data_volume:
