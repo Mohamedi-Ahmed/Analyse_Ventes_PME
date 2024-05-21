@@ -1,6 +1,6 @@
 # Projet : Analyser les ventes d’une PME
 
-Ce projet a été réalisé pour préparer la journée de sélection pour le parcours de formation Data Engineer chez Simplon. Il consiste à analyser les ventes d'une PME en mettant en place une architecture en deux services avec Docker et en utilisant SQLite comme base de données.
+Ce projet consiste à analyser les ventes d'une PME en mettant en place une architecture en deux services avec Docker et en utilisant SQLite comme base de données.
 
 ## Objectifs
 
@@ -21,10 +21,15 @@ Les services communiquent entre eux via des ports exposés.
 
 ## Fichiers du projet
 
-- **Dockerfile** : Fichier pour construire l'image Docker du service d'exécution des scripts.
+- **app/** : Contient les scripts de l'application.
+- **data/** : Contient les données brutes.
+- **db/** : Contient les scripts de base de données.
 - **docker-compose.yml** : Fichier Docker Compose pour orchestrer les deux services.
-- **script.py** : Script Python pour l'importation et l'analyse des données.
-- **schema.sql** : Fichier SQL pour créer les tables de la base de données.
+- **Dockerfile** : Fichier pour construire l'image Docker du service d'exécution des scripts.
+- **requirements.txt** : Liste des dépendances Python nécessaires.
+- **results/** : Contient les résultats des analyses.
+- **sales_db.db** : La base de données SQLite utilisée pour stocker les données de vente.
+- **server/** : Contient les fichiers de configuration du serveur.
 
 ## Installation
 
@@ -42,14 +47,14 @@ Les services communiquent entre eux via des ports exposés.
 ## Utilisation
 
 1. **Importer les données** :
-   - Les données sont importées automatiquement depuis les URLs fournies dans le script `script.py`.
+   - Les données sont importées automatiquement depuis les URLs fournies dans le script `app/import_data.py`.
 
 2. **Analyser les données** :
    - Les requêtes SQL pour analyser les ventes sont exécutées via le script Python et les résultats sont stockés dans la base de données SQLite.
 
 ## Scripts
 
-- **script.py** :
+- **app/import_data.py** :
   - Collecte les fichiers de données à partir des URLs partagées par le client.
   - Crée la base de données et les tables nécessaires.
   - Importe les nouvelles données de vente.
